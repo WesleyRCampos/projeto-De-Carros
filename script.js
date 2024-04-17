@@ -6,15 +6,15 @@ function changeCarModel(model) {
 
     if (model === 'onix') {
         carImage.src = 'car_onix_' + color + '.png';
-        carName.textContent = 'Carro Onix';
+        carName.textContent = 'Onix';
         carPrice.textContent = 'R$ 50.000,00';
     } else if (model === 'cruze') {
         carImage.src = 'car_cruze_' + color + '.png';
-        carName.textContent = 'Carro Cruze';
+        carName.textContent = 'Cruze';
         carPrice.textContent = 'R$ 75.000,00';
     } else if (model === 'luxury') {
         carImage.src = 'car_luxury_' + color + '.png';
-        carName.textContent = 'Luxury Car';
+        carName.textContent = 'Luxury';
         carPrice.textContent = 'R$ 100.000,00';
     }
 }
