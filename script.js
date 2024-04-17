@@ -1,8 +1,8 @@
 function changeCarModel(model) {
-    var carImage = document.getElementById('car-image');
-    var carName = document.getElementById('car-name');
-    var carPrice = document.getElementById('car-price');
-    var color = document.getElementById('car-color').value;
+    var carImage = document.getElementById('carro-imagem');
+    var carName = document.getElementById('carro-nome');
+    var carPrice = document.getElementById('carro-preco');
+    var color = document.getElementById('carro-cor').value;
 
     if (model === 'onix') {
         carImage.src = 'car_onix_' + color + '.png';
@@ -20,9 +20,9 @@ function changeCarModel(model) {
 }
 
 function changeCarColor() {
-    var carImage = document.getElementById('car-image');
-    var color = document.getElementById('car-color').value;
-    var currentModel = document.getElementById('car-name').textContent.toLowerCase().replace(' ', '_');
+    var carImage = document.getElementById('carro-imagem');
+    var color = document.getElementById('carro-cor').value;
+    var currentModel = document.getElementById('carro-nome').textContent.toLowerCase().replace(' ', '_');
 
     carImage.src = 'car_' + currentModel + '_' + color + '.png';
 }
