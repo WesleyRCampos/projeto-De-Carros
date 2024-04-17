@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Car Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="banner">
+            <h2>Welcome to our Car Store!</h2>
+            <img id="car-image" src="car_onix_white.png" alt="Car">
+            <p>Price: <span id="car-price">R$ 50.000,00</span></p>
+            <p>Model: <span id="car-name">Onix</span></p>
+            <label for="car-color">Choose a color:</label>
+            <select id="car-color" onchange="changeCarColor()">
+                <option value="white">Branco</option>
+                <option value="blue">Azul</option>
+                <option value="black">Preto</option>
+            </select>
+            <button onclick="changeCarModel('onix')">Onix</button>
+            <button onclick="changeCarModel('cruze')">Cruze</button>
+            <button onclick="changeCarModel('luxury')">Luxury Car</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Car Store</p>
+    </footer>
+</body>
+</html>
+
+
+
