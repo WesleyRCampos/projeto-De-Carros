@@ -19,21 +19,26 @@
         </nav>
     </header>
     <main>
-        <section id="banner">
-            <h2>Bem-Vindo a sua loja de carros!</h2>
-            <img id="carro-imagem" src="car_onix_white.png" alt="Car">
-            <p>Price: <span id="carro-preco">R$ 50.000,00</span></p>
-            <p>Model: <span id="carro-nome">Onix</span></p>
-            <label for="carro-cor">Choose a color:</label>
-            <select id="carro-cor" onchange="changeCarColor()">
-                <option value="white">Branco</option>
-                <option value="blue">Azul</option>
-                <option value="black">Preto</option>
-            </select>
-            <button onclick="changeCarModel('onix')">Onix</button>
-            <button onclick="changeCarModel('cruze')">Cruze</button>
-            <button onclick="changeCarModel('luxury')">Luxury Car</button>
-        </section>
+        <div id="banner">
+            <section class="modelColor">
+                <select id="carro-cor" onchange="changeCarColor()">
+                    <option value="white">Branco</option>
+                    <option value="blue">Azul</option>
+                    <option value="black">Preto</option>
+                </select>
+            </section>
+            <section class="modelinfo">
+                <h2>Bem-Vindo a sua loja de carros!</h2>
+                <img id="carro-imagem" src="car_onix_white.png" alt="Car">
+                <p>Preço: <span id="carro-preco">R$ 50.000,00</span></p>
+                <p>Modelo: <span id="carro-nome">Onix</span></p>
+            </section>
+            <section class="modelCar">
+                <button onclick="changeCarModel('onix')">Onix</button>
+                <button onclick="changeCarModel('cruze')">Cruze</button>
+                <button onclick="changeCarModel('luxury')">Luxury Car</button>
+            </section>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Car Store</p>
