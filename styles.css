@@ -37,7 +37,28 @@ main {
 #banner {
     text-align: center;
     margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    
 }
+.modelColor{
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
 
 #banner img {
     max-width: 100%;
@@ -46,9 +67,44 @@ main {
 }
 
 #carro-imagem {
-    width: 300px;
+    width: 500px;
     height: auto;
     margin-bottom: 20px;
+}
+
+.modelCar{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+
+.modelinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.modelinfo p{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modelColor select{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
 }
 
 #banner button {
