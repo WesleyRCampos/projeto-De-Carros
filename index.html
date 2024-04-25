@@ -7,18 +7,42 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="dark">
     <header>
-        <h1>Car Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <div class="text header-text">
+                        <span class="store">Loja</span>
+                        <span class="name">Carro</span>
+                    </div>
+                    <div class="text-menu">
+                        <li class="search-box">
+                            <i class="fa-solid fa-search icon"></i>
+                            <input type="text" placeholder="Pesquisar....">
+                        </li>
+                        <li class="mode">
+                            <div class="moon-sun">
+                                <i class="fa-solid fa-moon fa-fade icon moon"></i>
+                                <i class="fa-solid fa-sun fa-fade icon sun"></i>
+                            </div>
+                            <span class="mode-text text">Dark Mode</span>
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right toggle"></i>
+            </header>
         </nav>
     </header>
     <main>
+        <div id="addModel">
+            <label for="new-model">Novo Modelo de Carro:</label>
+            <input type="text" id="new-model">
+            <button onclick="addNewCarModel()">Adicionar Novo Modelo de Carro</button>
+        </div>
         <div id="banner">
             <section class="modelColor">
                 <select id="carro-cor" onchange="changeCarColor()">
@@ -28,7 +52,7 @@
                 </select>
             </section>
             <section class="modelinfo">
-                <h2>Bem-Vindo a sua loja de carros!</h2>
+                <h2>Bem-Vindo à Nossa Loja de Carros!</h2>
                 <img id="carro-imagem" src="car_onix_white.png" alt="Car">
                 <p>Preço: <span id="carro-preco">R$ 50.000,00</span></p>
                 <p>Modelo: <span id="carro-nome">Onix</span></p>
@@ -37,6 +61,7 @@
                 <button onclick="changeCarModel('onix')">Onix</button>
                 <button onclick="changeCarModel('cruze')">Cruze</button>
                 <button onclick="changeCarModel('luxury')">Luxury Car</button>
+                <button onclick="addToCart()">Adicionar ao Carrinho</button>
             </section>
         </div>
     </main>
@@ -45,6 +70,3 @@
     </footer>
 </body>
 </html>
-
-
-
