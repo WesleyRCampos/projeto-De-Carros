@@ -195,7 +195,7 @@ body.dark .sidebar header .toggle{
     background-color: #0056b3;
 }
 
-#cart-message {
+#cart {
     display: none;
     margin-top: 10px;
     padding: 10px;
@@ -205,7 +205,7 @@ body.dark .sidebar header .toggle{
 }
 
 
-#cart-message {
+#cart {
     display: flex;
     height: 50%; /* Por padrão, a mensagem está oculta */
     background-color: var(--primary-color);
