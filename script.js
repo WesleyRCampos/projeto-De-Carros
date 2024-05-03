@@ -35,7 +35,6 @@ function changeCarModel(model) {
     carPrice.textContent = modelPrice;
 }
 
-// Função para obter o preço do modelo
 function getModelPrice(model) {
     switch (model) {
         case 'onix':
@@ -45,8 +44,16 @@ function getModelPrice(model) {
         case 'luxury':
             return 'R$ 100.000,00';
         default:
-            return 'Preço não encontrado';
+            return 'Preço não disponível';
     }
+}
+
+function changeCarColor() {
+    var carImage = document.getElementById('carro-imagem');
+    var color = document.getElementById('carro-cor').value;
+    var currentModel = document.getElementById('carro-nome').textContent.toLowerCase().replace(' ', '_');
+
+    carImage.src = `car_${currentModel}_${color}.png`;
 }
 
 // Função para adicionar um novo modelo de carro
@@ -73,5 +80,11 @@ function addToCart() {
     var cartItems = document.getElementById('cart-items');
     var newItem = document.createElement('li');
     newItem.textContent = `${carColor} ${carName} - ${carPrice}`;
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Excluir';
+    deleteButton.onclick = function() {
+        cartItems.removeChild(newItem);
+    };
+    newItem.appendChild(deleteButton);
     cartItems.appendChild(newItem);
 }
