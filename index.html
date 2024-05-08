@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Loja de Carro</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="dark">
+<body class="escuro">
     <header>
-        <nav class="sidebar close">
+        <nav class="sidebar fechar">
             <header>
                 <div class="image-text">
                     <div class="text header-text" >
@@ -17,14 +18,15 @@
                     <div class="text-menu">
                         <li class="search-box">
                             <i class="fa-solid fa-search icon"></i>
-                            <input type="text" placeholder="Pesquisar....">
+                            <input type="text" id="pesquisar-carro" onkeyup="pesquisarCarro()" placeholder="Pesquisar...">
                         </li>
+                        
                         <li class="mode">
                             <div class="moon-sun">
                                 <i class="fa-solid fa-moon fa-fade icon moon"></i>
                                 <i class="fa-solid fa-sun fa-fade icon sun"></i>
                             </div>
-                            <span class="mode-text text">Dark Mode</span>
+                            <span class="mode-text text">Modo Escuro</span>
                             <div class="toggle-switch">
                                 <span class="switch">
                                 </span>
@@ -35,7 +37,7 @@
                 <i class="fa-solid fa-chevron-right toggle"></i>
                 <div class="menu" id="cart">
                     <h2>Carrinho de Compras</h2>
-                    <ul id="cart-items">
+                    <ul id="carrinho-Itens">
                   
                     </ul>
                </div>
@@ -43,29 +45,31 @@
     </header>
     <main>
         <div id="addModel">
-            <label for="new-model">Novo Modelo de Carro:</label>
-            <input type="text" id="new-model">
-            <button onclick="addNewCarModel()">Adicionar Novo Modelo de Carro</button>
-        </div>
+            <label for="novo-modelo">Novo Modelo de Carro:</label>
+            <input type="text" id="novo-modelo">
+            <button onclick="adicionarModeloNovo()">Adicionar Novo Modelo de Carro</button>
+        </div>        
         <div id="banner">
-            <section class="modelColor">
-                <select id="carro-cor" onchange="changeCarColor()">
+            <section class="modeloColor">
+                <select id="carro-cor" onchange="trocarCor()">
                     <option value="white">Branco</option>
                     <option value="blue">Azul</option>
                     <option value="black">Preto</option>
                 </select>
             </section>
-            <section class="modelinfo">
+            <section class="modeloinfo">
                 <h2>Bem-Vindo à Nossa Loja de Carros!</h2>
                 <img id="carro-imagem" src="car_onix_white.png" alt="Car">
                 <p>Preço: <span id="carro-preco">R$ 50.000,00</span></p>
                 <p>Modelo: <span id="carro-nome">Onix</span></p>
             </section>
-            <section class="modelCar">
-                <button onclick="changeCarModel('onix')">Onix</button>
-                <button onclick="changeCarModel('cruze')">Cruze</button>
-                <button onclick="changeCarModel('luxury')">Luxury Car</button>
-                <button onclick="addToCart()">Adicionar ao Carrinho</button>
+            <section class="modeloCar">
+                <button onclick="trocarModelo('onix')">Onix</button>
+                <button onclick="trocarModelo('cruze')">Cruze</button>
+                <button onclick="trocarModelo('luxury')">Luxury Car</button>
+                <button onclick="carrinho()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </button>
             </section>
         </div>
     </main>

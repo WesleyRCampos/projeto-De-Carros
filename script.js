@@ -5,38 +5,66 @@ const body = document.querySelector("body"),
         modeSwtich = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text");
 
-        toggle.addEventListener("click", () =>{
-           sidebar.classList.toggle("close"); 
-        });
+toggle.addEventListener("click", () =>{
+    sidebar.classList.toggle("fechar"); 
+});
         
-        modeSwtich.addEventListener("click", () =>{
-           body.classList.toggle("dark");
+modeSwtich.addEventListener("click", () =>{
+    body.classList.toggle("escuro");
            
-           if(body.classList.contains("dark")){ 
-            modeText.innerText = "Light Mode"
-        }else{
-            modeText.innerText = "Dark Mode"
+    if(body.classList.contains("escuro")){ 
+        modeText.innerText = "Modo Claro"
+    }else{
+        modeText.innerText = "Modo Escuro"
+    }
+});
+
+function pesquisarCarro() {
+    var input = document.getElementById('pesquisar-carro');
+    var filtro = input.value.toUpperCase();
+    var carros = document.querySelectorAll('#banner .modeloCar button');
+
+    for (var i = 0; i < carros.length; i++) {
+        var nome = carros[i].textContent.toUpperCase();
+        if (nome.indexOf(filtro) > -1) {
+            carros[i].style.display = '';
+        } else {
+            carros[i].style.display = 'none';
         }
-        });
-
-// Função para trocar o modelo do carro
-function changeCarModel(model) {
-    var carImage = document.getElementById('carro-imagem');
-    var carName = document.getElementById('carro-nome');
-    var carPrice = document.getElementById('carro-preco');
-    var color = document.getElementById('carro-cor').value;
-
-    var imageUrl = `car_${model}_${color}.png`;
-    var modelName = model.charAt(0).toUpperCase() + model.slice(1); // Capitaliza o nome do modelo
-    var modelPrice = getModelPrice(model); // Obtém o preço do modelo
-
-    carImage.src = imageUrl;
-    carName.textContent = modelName;
-    carPrice.textContent = modelPrice;
+    }
 }
 
-function getModelPrice(model) {
-    switch (model) {
+
+// Função para trocar o modeloo do carro
+function trocarModelo(modelo) {
+    var carroImagem = document.getElementById('carro-imagem');
+    var carroNome = document.getElementById('carro-nome');
+    var carroPreco = document.getElementById('carro-preco');
+    var cor = document.getElementById('carro-cor').value;
+
+    var imagemUrl = `car_${modelo}_${cor}.png`;
+    var modeloName = modelo.charAt(0).toUpperCase() + modelo.slice(1); // Capitaliza o nome do modelo
+    var modeloPrice = ModeloPreco(modelo); // Obtém o preço do modelo
+
+    // Verifica se a imagem existe
+    var img = new Image();
+    img.src = imagemUrl;
+    img.onload = function() {
+        // Se a imagem existir, atribui-a ao elemento img
+        carroImagem.src = imagemUrl;
+    };
+    img.onerror = function() {
+        // Se a imagem não existir, define uma imagem de substituição
+        carroImagem.src = 'imagem_padrao.png';
+    };
+
+    carroNome.textContent = modeloName;
+    carroPreco.textContent = modeloPrice;
+}
+
+
+function ModeloPreco(modelo) {
+    switch (modelo) {
         case 'onix':
             return 'R$ 50.000,00';
         case 'cruze':
@@ -48,43 +76,50 @@ function getModelPrice(model) {
     }
 }
 
-function changeCarColor() {
-    var carImage = document.getElementById('carro-imagem');
-    var color = document.getElementById('carro-cor').value;
-    var currentModel = document.getElementById('carro-nome').textContent.toLowerCase().replace(' ', '_');
+function trocarCor() {
+    var carroImagem = document.getElementById('carro-imagem');
+    var cor = document.getElementById('carro-cor').value;
+    var modeloAtual = document.getElementById('carro-nome').textContent.toLowerCase().replace(' ', '_');
 
-    carImage.src = `car_${currentModel}_${color}.png`;
+    carroImagem.src = `car_${modeloAtual}_${cor}.png`;
 }
 
-// Função para adicionar um novo modelo de carro
-function addNewCarModel() {
-    var newModel = document.getElementById('new-model').value;
+function adicionarModeloNovo() {
+    var modeloNovo = document.getElementById('novo-modelo').value;
 
-    if (!newModel) {
+    if (!modeloNovo) {
         alert('Por favor, preencha o campo do novo modelo de carro.');
         return;
     }
 
-    var select = document.getElementById('carro-nome');
-    var option = document.createElement('option');
-    option.textContent = newModel;
-    select.appendChild(option);
+    var modelosDisponiveis = document.querySelector('.modeloCar');
+
+    var botaoNovoModelo = document.createElement('button');
+    botaoNovoModelo.textContent = modeloNovo;
+    botaoNovoModelo.onclick = function() {
+        trocarModelo(modeloNovo.toLowerCase());
+    };
+
+    // Insere o novo botão no início da lista de modelos disponíveis
+    modelosDisponiveis.insertBefore(botaoNovoModelo, modelosDisponiveis.firstChild);
 }
 
 // Função para adicionar o carro ao carrinho
-function addToCart() {
-    var carName = document.getElementById('carro-nome').textContent;
-    var carPrice = document.getElementById('carro-preco').textContent;
-    var carColor = document.getElementById('carro-cor').value;
+function carrinho() {
+    var carroNome = document.getElementById('carro-nome').textContent;
+    var carroPreco = document.getElementById('carro-preco').textContent;
+    var carroCor = document.getElementById('carro-cor').value;
 
-    var cartItems = document.getElementById('cart-items');
-    var newItem = document.createElement('li');
-    newItem.textContent = `${carColor} ${carName} - ${carPrice}`;
+    var carrinhoItens = document.getElementById('carrinho-Itens');
+    var novoItem = document.createElement('li');
+    novoItem.textContent = `${carroCor} ${carroNome} - ${carroPreco}`;
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Excluir';
+    var deleteIcon = document.createElement('i');
+    deleteIcon.className = 'fa-solid fa-trash'; // Adicione a classe do ícone desejado
+    deleteButton.appendChild(deleteIcon);
     deleteButton.onclick = function() {
-        cartItems.removeChild(newItem);
+        carrinhoItens.removeChild(novoItem);
     };
-    newItem.appendChild(deleteButton);
-    cartItems.appendChild(newItem);
+    novoItem.appendChild(deleteButton);
+    carrinhoItens.appendChild(novoItem);
 }

@@ -76,16 +76,16 @@ body {
     opacity: 1;
 }
 
-.sidebar.close .menu{
+.sidebar.fechar .menu{
     margin-top: 25px;
     opacity: 0;
 }
 
-.sidebar.close .mode-text {
+.sidebar.fechar .mode-text {
     opacity: 1;
 }
 
-.sidebar.close {
+.sidebar.fechar {
     height: 105px;
     
 }
@@ -154,10 +154,10 @@ header .image-text .header-text{
     font-size: 12px;
     transition: all 0.3s ease;
 }
-.sidebar.close header .toggle{
+.sidebar.fechar header .toggle{
     transform: translateY(-50%) rotate(90deg);
 }
-body.dark .sidebar header .toggle{
+body.escuro .sidebar header .toggle{
     color: var(--text-color);
 }
 
@@ -305,8 +305,8 @@ body.dark .sidebar header .toggle{
 .sidebar li a:hover .text{
     color:var(--sidebar-color)
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+body.escuro .sidebar li a:hover .icon,
+body.escuro .sidebar li a:hover .text{
     color:var(--text-color)
 }
 
@@ -332,11 +332,11 @@ body.dark .sidebar li a:hover .text{
     opacity: 0;
 }
 
-body.dark .mode i.sun{
+body.escuro .mode i.sun{
     opacity: 1;
 }
 
-body.dark .mode i.moon{
+body.escuro .mode i.moon{
     opacity: 1;
 }
 
@@ -378,10 +378,10 @@ body.dark .mode i.moon{
 }
 
 
-body.dark .switch::before{
+body.escuro .switch::before{
     left: 25px;
 }
-body.dark{
+body.escuro{
     --body-color: #18191a;
     --sidebar-color: #242526;
     --primary-color: #3a3b3c;
@@ -410,7 +410,7 @@ main{
     
     
 }
-.modelColor{
+.modeloColor{
     display:flex ;
     flex-direction: column;
     justify-content: center;
@@ -438,18 +438,18 @@ main{
     margin-bottom: 20px;
 }
 
-.modelCar{
+.modeloCar{
     display: flex;
     flex-direction: column;
     justify-content:space-between;
 }
 
-.modelinfo{
+.modeloinfo{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.modelinfo p{
+.modeloinfo p{
     margin: 0;
     padding: 0;
     font-size: 15px;
@@ -464,7 +464,7 @@ main{
     font-weight: bold;
 }
 
-.modelColor select{
+.modeloColor select{
     width: 150px;
     height: 30px;
     border-radius: 5px;
