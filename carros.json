@@ -1,0 +1,32 @@
+{
+    "carros": [
+      {
+        "modelo": "onix",
+        "preco": "R$ 50.000,00",
+        "imagens": {
+          "branco": "car_onix_white.png",
+          "azul": "car_onix_blue.png",
+          "preto": "car_onix_black.png"
+        }
+      },
+      {
+        "modelo": "cruze",
+        "preco": "R$ 75.000,00",
+        "imagens": {
+          "branco": "car_cruze_white.png",
+          "azul": "car_cruze_blue.png",
+          "preto": "car_cruze_black.png"
+        }
+      },
+      {
+        "modelo": "luxury",
+        "preco": "R$ 100.000,00",
+        "imagens": {
+          "branco": "car_luxury_white.png",
+          "azul": "car_luxury_blue.png",
+          "preto": "car_luxury_black.png"
+        }
+      }
+    ]
+  }
+  

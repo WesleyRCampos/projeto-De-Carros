@@ -44,11 +44,7 @@
         </nav>
     </header>
     <main>
-        <div id="addModel">
-            <label for="novo-modelo">Novo Modelo de Carro:</label>
-            <input type="text" id="novo-modelo">
-            <button onclick="adicionarModeloNovo()">Adicionar Novo Modelo de Carro</button>
-        </div>        
+              
         <div id="banner">
             <section class="modeloColor">
                 <select id="carro-cor" onchange="trocarCor()">
@@ -64,13 +60,11 @@
                 <p>Modelo: <span id="carro-nome">Onix</span></p>
             </section>
             <section class="modeloCar">
-                <button onclick="trocarModelo('onix')">Onix</button>
-                <button onclick="trocarModelo('cruze')">Cruze</button>
-                <button onclick="trocarModelo('luxury')">Luxury Car</button>
-                <button onclick="carrinho()">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </button>
+                
             </section>
+            <button onclick="carrinho()">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
         </div>
     </main>
     <footer>

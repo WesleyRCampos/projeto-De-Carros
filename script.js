@@ -19,6 +19,24 @@ modeSwtich.addEventListener("click", () =>{
     }
 });
 
+// Carregar dados do arquivo JSON
+fetch('carros.json')
+  .then(response => response.json())
+  .then(data => {
+    const carros = data.carros;
+    // Exibir os modelos de carros na seção "modeloCar"
+    const modeloCar = document.querySelector('.modeloCar');
+    carros.forEach(carro => {
+      const button = document.createElement('button');
+      button.textContent = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1);
+      button.addEventListener('click', () => {
+        trocarModelo(carro);
+      });
+      modeloCar.appendChild(button);
+    });
+  });
+
+  //funcao para pesquisar
 function pesquisarCarro() {
     var input = document.getElementById('pesquisar-carro');
     var filtro = input.value.toUpperCase();
@@ -35,46 +53,41 @@ function pesquisarCarro() {
 }
 
 
-// Função para trocar o modeloo do carro
-function trocarModelo(modelo) {
-    var carroImagem = document.getElementById('carro-imagem');
-    var carroNome = document.getElementById('carro-nome');
-    var carroPreco = document.getElementById('carro-preco');
-    var cor = document.getElementById('carro-cor').value;
+// Função para trocar o modelo
 
-    var imagemUrl = `car_${modelo}_${cor}.png`;
-    var modeloName = modelo.charAt(0).toUpperCase() + modelo.slice(1); // Capitaliza o nome do modelo
-    var modeloPrice = ModeloPreco(modelo); // Obtém o preço do modelo
+function trocarModelo(carro) {
+  const carroImagem = document.getElementById('carro-imagem');
+  const carroNome = document.getElementById('carro-nome');
+  const carroPreco = document.getElementById('carro-preco');
+  const cor = document.getElementById('carro-cor').value.toLowerCase();
 
-    // Verifica se a imagem existe
-    var img = new Image();
-    img.src = imagemUrl;
-    img.onload = function() {
-        // Se a imagem existir, atribui-a ao elemento img
-        carroImagem.src = imagemUrl;
-    };
-    img.onerror = function() {
-        // Se a imagem não existir, define uma imagem de substituição
-        carroImagem.src = 'imagem_padrao.png';
-    };
+  const imagemUrl = carro.imagens[cor] || 'imagem_padrao.png'; // Verifica se a imagem está disponível
+  const modeloName = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1); // Capitaliza o nome do modelo
 
-    carroNome.textContent = modeloName;
-    carroPreco.textContent = modeloPrice;
+  carroImagem.src = imagemUrl;
+  carroNome.textContent = modeloName;
+  carroPreco.textContent = carro.preco;
 }
 
+//funcao para pegar o valor
 
-function ModeloPreco(modelo) {
-    switch (modelo) {
-        case 'onix':
-            return 'R$ 50.000,00';
-        case 'cruze':
-            return 'R$ 75.000,00';
-        case 'luxury':
-            return 'R$ 100.000,00';
-        default:
+async function ModeloPreco(modelo) {
+    try {
+        const response = await fetch('carros.json'); 
+        const data = await response.json();
+
+        if (modelo in data) {
+            return data[modelo].preco;
+        } else {
             return 'Preço não disponível';
+        }
+    } catch (error) {
+        console.error('Erro ao carregar o arquivo JSON:', error);
+        return 'Erro ao carregar o preço';
     }
 }
+
+//funcao para cor
 
 function trocarCor() {
     var carroImagem = document.getElementById('carro-imagem');
@@ -84,25 +97,6 @@ function trocarCor() {
     carroImagem.src = `car_${modeloAtual}_${cor}.png`;
 }
 
-function adicionarModeloNovo() {
-    var modeloNovo = document.getElementById('novo-modelo').value;
-
-    if (!modeloNovo) {
-        alert('Por favor, preencha o campo do novo modelo de carro.');
-        return;
-    }
-
-    var modelosDisponiveis = document.querySelector('.modeloCar');
-
-    var botaoNovoModelo = document.createElement('button');
-    botaoNovoModelo.textContent = modeloNovo;
-    botaoNovoModelo.onclick = function() {
-        trocarModelo(modeloNovo.toLowerCase());
-    };
-
-    // Insere o novo botão no início da lista de modelos disponíveis
-    modelosDisponiveis.insertBefore(botaoNovoModelo, modelosDisponiveis.firstChild);
-}
 
 // Função para adicionar o carro ao carrinho
 function carrinho() {
