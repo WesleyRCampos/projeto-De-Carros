@@ -1,9 +1,9 @@
 const body = document.querySelector("body"),
-        sidebar = body.querySelector(".sidebar"),
-        toggle = body.querySelector(".toggle"),
-        searchBtn = body.querySelector(".search-box"),
-        modeSwtich = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
+    sidebar = body.querySelector(".sidebar"),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwtich = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text");
 
 toggle.addEventListener("click", () =>{
     sidebar.classList.toggle("fechar"); 
@@ -54,7 +54,6 @@ function pesquisarCarro() {
     }
 }
 
-
 // Função para trocar o modelo
 
 function trocarModelo(carro) {
@@ -63,8 +62,8 @@ function trocarModelo(carro) {
   const carroPreco = document.getElementById('carro-preco');
   const cor = document.getElementById('carro-cor').value.toLowerCase();
 
-  const imagemUrl = carro.imagens[cor] || 'imagem_padrao.png'; // Verifica se a imagem está disponível
-  const modeloName = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1); // Capitaliza o nome do modelo
+  const imagemUrl = carro.imagens[cor] || 'imagem_padrao.png'; // Verifica se a imagem existe
+  const modeloName = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1); // Acha o nome do modelo
 
   carroImagem.src = imagemUrl;
   carroNome.textContent = modeloName;
@@ -103,8 +102,8 @@ function trocarCor() {
 
 function resetarCor() {
     var corOptions = document.getElementById('carro-cor').options;
-    corOptions.selectedIndex = 0; // Definindo o índice selecionado de volta para o primeiro item
-    trocarCor(); // Chamando a função para trocar a cor
+    corOptions.selectedIndex = 0; // Defini o índice e volta para o primeiro item
+    trocarCor(); // Chama a função para trocar a cor
 }
 
 // Função para adicionar o carro ao carrinho
@@ -119,7 +118,7 @@ function carrinho() {
     novoItem.textContent = `${carroCor} ${carroNome} - ${carroPreco}`;
     var deleteButton = document.createElement('button');
     var deleteIcon = document.createElement('i');
-    deleteIcon.className = 'fa-solid fa-trash'; // Adicione a classe do ícone desejado
+    deleteIcon.className = 'fa-solid fa-trash'; 
     deleteButton.appendChild(deleteIcon);
     deleteButton.onclick = function() {
         carrinhoItens.removeChild(novoItem);
