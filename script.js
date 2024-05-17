@@ -24,19 +24,21 @@ fetch('carros.json')
   .then(response => response.json())
   .then(data => {
     const carros = data.carros;
-    // Exibir os modelos de carros na seção "modeloCar"
+    // Exibir os modelos de carros no "modeloCar"
     const modeloCar = document.querySelector('.modeloCar');
     carros.forEach(carro => {
       const button = document.createElement('button');
       button.textContent = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1);
       button.addEventListener('click', () => {
         trocarModelo(carro);
+        resetarCor(); 
       });
       modeloCar.appendChild(button);
     });
   });
 
-  //funcao para pesquisar
+//funcao para pesquisar
+
 function pesquisarCarro() {
     var input = document.getElementById('pesquisar-carro');
     var filtro = input.value.toUpperCase();
@@ -97,8 +99,16 @@ function trocarCor() {
     carroImagem.src = `car_${modeloAtual}_${cor}.png`;
 }
 
+// Função para resetar a cor 
+
+function resetarCor() {
+    var corOptions = document.getElementById('carro-cor').options;
+    corOptions.selectedIndex = 0; // Definindo o índice selecionado de volta para o primeiro item
+    trocarCor(); // Chamando a função para trocar a cor
+}
 
 // Função para adicionar o carro ao carrinho
+
 function carrinho() {
     var carroNome = document.getElementById('carro-nome').textContent;
     var carroPreco = document.getElementById('carro-preco').textContent;
