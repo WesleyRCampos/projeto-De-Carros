@@ -30,8 +30,12 @@ fetch('carros.json')
       const button = document.createElement('button');
       button.textContent = carro.modelo.charAt(0).toUpperCase() + carro.modelo.slice(1);
       button.addEventListener('click', () => {
-        trocarModelo(carro);
-        resetarCor(); 
+        showLoadingSpinner();
+        setTimeout(() => {
+            trocarModelo(carro);
+            resetarCor();
+            hideLoadingSpinner();
+        }, 1000); // Simulando um tempo de carregamento de 1 segundo 
       });
       modeloCar.appendChild(button);
     });
@@ -104,6 +108,18 @@ function resetarCor() {
     var corOptions = document.getElementById('carro-cor').options;
     corOptions.selectedIndex = 0; // Defini o índice e volta para o primeiro item
     trocarCor(); // Chama a função para trocar a cor
+}
+
+// Função para mostrar o spinner e esconder os detalhes do carro
+function showLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = 'block';
+    document.getElementById('carro-detalhes').classList.add('hidden');
+}
+
+// Função para ocultar o spinner e mostrar os detalhes do carro
+function hideLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = 'none';
+    document.getElementById('carro-detalhes').classList.remove('hidden');
 }
 
 // Função para adicionar o carro ao carrinho
